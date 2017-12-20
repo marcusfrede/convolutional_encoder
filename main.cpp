@@ -13,8 +13,16 @@
 #include "oct2bin.hpp"
 
 
-int calcValues(std::deque<int> &registers, long long &generator){
+int calcValues(std::deque<int> registers, std::string generator){
     int retVal = 0;
+    
+    for(int i=0; i<registers.size(); i++)
+    {
+        //if (generator[i] "1")
+            registers.at(i);
+    }
+    
+    
     
     int c1val = registers.at(0) ^ registers.at(1) ^ registers.at(2) ^ registers.at(3) ^ registers.at(6);
     int c2val = registers.at(0) ^ registers.at(2) ^ registers.at(3) ^ registers.at(5) ^ registers.at(6);
@@ -48,8 +56,11 @@ int main(int argc, const char * argv[]) {
         registers.push_front(input[i]);
         registers.pop_back();
         
-        int c1val = calcValues(registers, g1);
-        int c2val = calcValues(registers, g2);
+      //  int c1val = calcValues(registers, g1);
+      //  int c2val = calcValues(registers, g2);
+        
+        int c1val = registers.at(0) ^ registers.at(1) ^ registers.at(2) ^ registers.at(3) ^ registers.at(6);
+        int c2val = registers.at(0) ^ registers.at(2) ^ registers.at(3) ^ registers.at(5) ^ registers.at(6);
         
         c1.push_front(c1val);
         c2.push_front(c2val);
